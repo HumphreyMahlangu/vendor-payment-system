@@ -6,6 +6,8 @@ import za.ac.mycput.vendorpaymentsystem.service.PurchaseOrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/purchase-orders")
@@ -14,7 +16,7 @@ public class PurchaseOrderController {
 
     private final PurchaseOrderService poService;
 
-    @PostMapping 
+    @PostMapping
     public ResponseEntity<PurchaseOrder> createPO(@RequestBody PurchaseOrderRequest request) {
 
         PurchaseOrder newPo = poService.createPO(
@@ -25,5 +27,17 @@ public class PurchaseOrderController {
         );
 
         return ResponseEntity.ok(newPo);
+    }
+
+    // ... existing imports ...
+    // Add imports:
+    // import java.util.List;
+
+
+    // existing createPO method...
+
+    @GetMapping
+    public ResponseEntity<List<PurchaseOrder>> getAllPOs() {
+        return ResponseEntity.ok(poService.findAll());
     }
 }

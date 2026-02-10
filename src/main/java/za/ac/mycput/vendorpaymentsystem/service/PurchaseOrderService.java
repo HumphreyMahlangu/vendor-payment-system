@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +43,9 @@ public class PurchaseOrderService {
         po.setValidUntil(validUntil);
 
         return poRepository.save(po);
+    }
+
+    public List<PurchaseOrder> findAll() {
+        return poRepository.findAll();
     }
 }
