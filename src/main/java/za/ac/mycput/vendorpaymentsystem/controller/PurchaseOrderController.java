@@ -29,13 +29,6 @@ public class PurchaseOrderController {
         return ResponseEntity.ok(newPo);
     }
 
-    // ... existing imports ...
-    // Add imports:
-    // import java.util.List;
-
-
-    // existing createPO method...
-
     @GetMapping
     public ResponseEntity<List<PurchaseOrder>> getAllPOs() {
         return ResponseEntity.ok(poService.findAll());
